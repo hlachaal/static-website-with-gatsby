@@ -218,7 +218,6 @@ img {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 1.45rem;
 }
 h1 {
   margin-left: 0;
@@ -619,4 +618,32 @@ pre tt:after {
   html {
     font-size: 100%;
   }
+}
+.logo {
+  width: 115px;
+}
+.navbar-toggler {
+  margin-top: -1.5rem;
+}
+a {
+  text-decoration: none !important;
+}
+.btn {
+  background-color: #45c9bc !important;
+  border-color: #45c9bc !important;
+}
+.btn:hover {
+  background-color: #6dd5ca !important;
+  border-color: #6dd5ca !important;
+}
+.collapse,
+.collapsing,
+.navbar-collapse {
+  position: absolute !important;
+  margin-top: 270px;
+  right: 30px;
+  width: 15rem !important;
+}
+.margin-top-30 {
+  margin-top: 30px;
 }

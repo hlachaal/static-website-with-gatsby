@@ -1,0 +1,12 @@
+.font26 {
+  font-size: 26px !important;
+}
+.alert-light {
+  background: transparent;
+}
+.alert-light h2 {
+  font-weight: 300;
+}
+p {
+  margin-bottom: 0;
+}

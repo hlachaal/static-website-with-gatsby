@@ -1,0 +1,149 @@
+.wrapper h1 {
+  line-height: 115px;
+  text-align: center;
+  font-size: 115px;
+  font-weight: 300;
+}
+.wrapper p {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0 !important;
+  padding: 80px !important;
+}
+main,
+button {
+  text-transform: uppercase;
+}
+.btn {
+  padding: 20px;
+}
+.wrapper {
+  margin-top: -124px;
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  z-index: -1;
+  bottom: 0;
+  overflow: hidden;
+  background-image: url(https://images.unsplash.com/photo-1531986362435-16b427eb9c26?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.wrapper section {
+  background: rgba(161, 161, 161, 0.4);
+}
+.camioun {
+  width: 200px;
+  margin-top: -150px;
+}
+#scroll {
+  float: right;
+  margin-top: -100px;
+}
+
+#scroll a span {
+  margin-right: 30px;
+  bottom: 0;
+  z-index: 100;
+  left: 50%;
+  width: 24px;
+  display: block;
+  height: 24px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb07 2s infinite;
+  animation: sdb07 2s infinite;
+  opacity: 0;
+  box-sizing: border-box;
+}
+#scroll a span:nth-of-type(1) {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+#scroll a span:nth-of-type(2) {
+  top: 16px;
+  -webkit-animation-delay: 0.15s;
+  animation-delay: 0.15s;
+}
+#scroll a span:nth-of-type(3) {
+  top: 32px;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+@-webkit-keyframes sdb07 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sdb07 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.wrapper-2 {
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  z-index: -1;
+  bottom: 0;
+  overflow: hidden;
+  background-image: url(https://images.pexels.com/photos/265614/pexels-photo-265614.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.wrapper-2 section {
+  background: rgba(161, 161, 161, 0.4);
+}
+.light-text {
+  font-weight: 300;
+}
+.light-text p {
+  text-transform: none;
+  font-size: 1.5rem;
+}
+.margin-70 {
+  margin: 70px;
+}
+.padding-60 {
+  padding: 60px;
+}
+
+.margin-top-60 {
+  margin-top: 60px;
+}
+.gray-bg {
+  background: #77ceea;
+}
+li {
+  list-style: none;
+}
+.ul-margin-0 {
+  margin: 0px !important;
+}
+.color-white {
+  color: #ffffff;
+}
+.container img {
+  border-radius: 0.25rem;
+}
+body {
+  background: #e2e2e2;
+}

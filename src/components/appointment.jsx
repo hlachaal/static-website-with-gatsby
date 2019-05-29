@@ -24,13 +24,19 @@ class Appointment extends Component {
   selectTablet = () => {
     this.selectDevice(2)
   }
-  selectLatop = () => {
+  selectLaptop = () => {
     this.selectDevice(3)
   }
 
   renderDeviceType() {
     if (this.state.deviceTypeSelected === false) {
-      return <DeviceType onSelectPhone={this.selectPhone} />
+      return (
+        <DeviceType
+          onSelectPhone={this.selectPhone}
+          onSelectTablet={this.selectTablet}
+          onSelectLaptop={this.selectLaptop}
+        />
+      )
     }
   }
   handelSelectModel = e => {
@@ -52,6 +58,7 @@ class Appointment extends Component {
       if (this.state.deviceModelSelected === false) {
         return (
           <DeviceModel
+            deviceTypeId={this.state.deviceTypeId}
             deviceModelId={this.state.deviceModelId}
             onSelectModel={this.handelSelectModel}
           />

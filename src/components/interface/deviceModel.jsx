@@ -1,5 +1,6 @@
-import React, { Component } from "react"
-import { Alert, Row, Col, Input } from "reactstrap"
+import React, { Component, Fragment } from "react"
+import { Link } from "gatsby"
+import { FormGroup, Label, Alert, Row, Col, Input } from "reactstrap"
 import { getPhoneModels } from "./services/phoneModelService"
 import { getTabletModels } from "./services/tabletModelService"
 
@@ -53,27 +54,53 @@ class DeviceModel extends Component {
 
     if (this.props.deviceTypeId === 3) {
       return (
-        <Row className="text-center">
-          <Col md="4">
-            <Input
-              type="text"
-              name="laptopMaker"
-              id="laptopMaker"
-              placeholder="Brand. Example: Dell"
-            />
-          </Col>
-          <Col md="4">
-            <Input
-              type="text"
-              name="laptopModel"
-              id="laptopModel"
-              placeholder="Model. Example: XPS 15"
-            />
-          </Col>
-          <Col md="4">
-            <button className="btn custom-padding">Submit</button>
-          </Col>
-        </Row>
+        <Fragment>
+          <Row className="text-center">
+            <Col md="6">
+              <FormGroup>
+                <Label for="laptopMaker">Laptop brand</Label>
+                <Input
+                  value={this.props.laptopBrand}
+                  type="text"
+                  name="laptopMaker"
+                  id="laptopMaker"
+                  placeholder="Example: Dell"
+                  onChange={this.props.onUpdateLaptopBrand}
+                />
+              </FormGroup>
+            </Col>
+            <Col md="6">
+              <FormGroup>
+                <Label for="laptopModel">Laptop model</Label>
+                <Input
+                  value={this.props.laptopModel}
+                  type="text"
+                  name="laptopModel"
+                  id="laptopModel"
+                  placeholder="Example: XPS 15"
+                  onChange={this.props.onUpdateLaptopModel}
+                />
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row className="text-center">
+            <Col md="4" />
+            <Col md="4">
+              <button
+                onClick={this.props.onSubmitLaptop}
+                className="btn custom-padding"
+              >
+                Submit
+              </button>
+              <br />
+              <br />
+              <Link onClick={this.props.onchangeDevice} to="">
+                Change Device
+              </Link>
+            </Col>
+            <Col md="4" />
+          </Row>
+        </Fragment>
       )
     }
   }

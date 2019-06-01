@@ -1,11 +1,11 @@
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
 import { Alert, Row, Col, Card } from "reactstrap"
 import { FaMobileAlt, FaTabletAlt, FaLaptop } from "react-icons/fa"
 
 class DeviceType extends Component {
   render() {
     return (
-      <div>
+      <Fragment>
         <Row className="text-center">
           <Col md="12">
             <Alert color="light">
@@ -50,7 +50,7 @@ class DeviceType extends Component {
             </Alert>
           </Col>
         </Row>
-      </div>
+      </Fragment>
     )
   }
 }

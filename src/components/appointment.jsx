@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from "react"
+import { Link } from "gatsby"
 import { Alert, Row, Col } from "reactstrap"
 import DeviceType from "./interface/deviceType"
 import DeviceModel from "./interface/deviceModel"
-import { Link } from "gatsby"
+import Issue from "./interface/issue"
 
 class Appointment extends Component {
   state = {
@@ -10,8 +11,12 @@ class Appointment extends Component {
     deviceTypeSelected: false,
     deviceModelId: 0,
     deviceModelSelected: false,
-    issueId: 0,
+    laptopBrand: "",
+    laptopModel: "",
+    issue: "",
+    issueAdditionalInfo: "",
     issueSelected: false,
+    repairInfoDone: false,
   }
   selectDevice = e => {
     const deviceTypeId = e
@@ -39,9 +44,27 @@ class Appointment extends Component {
       )
     }
   }
-  handelSelectModel = e => {
+  handleSelectModel = e => {
     this.setState({ deviceModelId: e.target.value, deviceModelSelected: true })
-    console.log(this.state)
+  }
+  SelectIssue = e => {
+    this.setState({ issue: e.target.value })
+  }
+  SubmitIssue = e => {
+    e.preventDefault()
+    this.setState({ issueSelected: true })
+  }
+
+  updateIssueInfo = e => {
+    this.setState({ issueAdditionalInfo: e.target.value, repairInfoDone: true })
+  }
+
+  editIssue = e => {
+    e.preventDefault()
+    this.setState({
+      issue: "",
+      issueSelected: false,
+    })
   }
   editDeviceModel = e => {
     e.preventDefault()
@@ -50,7 +73,22 @@ class Appointment extends Component {
       deviceTypeSelected: false,
       deviceModelId: 0,
       deviceModelSelected: false,
+      laptopBrand: "",
+      laptopModel: "",
     })
+  }
+  handleLaptopBrand = e => {
+    this.setState({ laptopBrand: e.target.value })
+    console.log(this.state)
+  }
+  handleLaptopModel = e => {
+    this.setState({ laptopModel: e.target.value })
+  }
+  handleSubmitLaptop = e => {
+    e.preventDefault()
+    if (this.state.laptopBrand !== "" && this.state.laptopModel !== "") {
+      this.setState({ deviceModelSelected: true })
+    }
   }
 
   renderDeviceModel() {
@@ -58,26 +96,68 @@ class Appointment extends Component {
       if (this.state.deviceModelSelected === false) {
         return (
           <DeviceModel
+            laptopBrand={this.state.laptopBrand}
+            laptopModel={this.state.laptopModel}
             deviceTypeId={this.state.deviceTypeId}
             deviceModelId={this.state.deviceModelId}
-            onSelectModel={this.handelSelectModel}
+            onSelectModel={this.handleSelectModel}
+            onUpdateLaptopBrand={this.handleLaptopBrand}
+            onUpdateLaptopModel={this.handleLaptopModel}
+            onSubmitLaptop={this.handleSubmitLaptop}
+            onchangeDevice={this.editDeviceModel}
           />
         )
       }
+      if (this.state.deviceTypeId === 1 || this.state.deviceTypeId === 2) {
+        return (
+          <Row className="text-center">
+            <Col md="12">
+              <Alert color="light">
+                <p>
+                  Selected device: <b>{this.state.deviceModelId}</b>
+                  <br />
+                  <Link to="" onClick={this.editDeviceModel}>
+                    Edit
+                  </Link>
+                </p>
+              </Alert>
+            </Col>
+          </Row>
+        )
+      }
+      if (this.state.deviceTypeId === 3) {
+        return (
+          <Row className="text-center">
+            <Col md="12">
+              <Alert color="light">
+                <p>
+                  Selected device: {this.state.laptopBrand}{" "}
+                  {this.state.laptopModel}
+                  <br />
+                  <Link to="" onClick={this.editDeviceModel}>
+                    Edit
+                  </Link>
+                </p>
+              </Alert>
+            </Col>
+          </Row>
+        )
+      }
+    }
+  }
+  renderIssue() {
+    if (this.state.deviceModelSelected === true) {
       return (
-        <Row className="text-center">
-          <Col md="12">
-            <Alert color="light">
-              <p>
-                Selected device: {this.state.deviceModelId}
-                <br />
-                <Link to="" onClick={this.editDeviceModel}>
-                  Edit
-                </Link>
-              </p>
-            </Alert>
-          </Col>
-        </Row>
+        <Issue
+          deviceTypeId={this.state.deviceTypeId}
+          issueSelected={this.state.issueSelected}
+          issue={this.state.issue}
+          issueAdditionalInfo={this.state.issueAdditionalInfo}
+          onSelectIssue={this.SelectIssue}
+          onSubmitIssue={this.SubmitIssue}
+          onUpdateIssueInfo={this.updateIssueInfo}
+          onEditIssue={this.editIssue}
+        />
       )
     }
   }
@@ -87,6 +167,7 @@ class Appointment extends Component {
       <Fragment>
         {this.renderDeviceType()}
         {this.renderDeviceModel()}
+        {this.renderIssue()}
       </Fragment>
     )
   }

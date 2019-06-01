@@ -92,10 +92,10 @@ class Issue extends Component {
           <p>
             Issue: <b>{this.props.issue}</b>
             <br />
-            <Link to="" onClick={this.props.onEditIssue}>
-              Edit
-            </Link>
           </p>
+          <Link to="" onClick={this.props.onEditIssue}>
+            Edit
+          </Link>
           <Row>
             <Col md="4" />
             <Col md="4">
@@ -126,11 +126,11 @@ class Issue extends Component {
           <p>
             Issue: <b>{this.props.issue}</b>
             <br />
-            <Link to="" onClick={this.props.onEditIssue}>
-              Edit
-            </Link>
+            <p>{this.props.issueAdditionalInfo}</p>
           </p>
-          <p>{this.props.issueAdditionalInfo}</p>
+          <Link to="" onClick={this.props.onEditIssue}>
+            Edit
+          </Link>
         </Alert>
       )
     }

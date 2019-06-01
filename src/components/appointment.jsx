@@ -16,7 +16,6 @@ class Appointment extends Component {
     issue: "",
     issueAdditionalInfo: "",
     issueSelected: false,
-    repairInfoDone: false,
   }
   selectDevice = e => {
     const deviceTypeId = e
@@ -56,7 +55,7 @@ class Appointment extends Component {
   }
 
   updateIssueInfo = e => {
-    this.setState({ issueAdditionalInfo: e.target.value, repairInfoDone: true })
+    this.setState({ issueAdditionalInfo: e.target.value })
   }
 
   editIssue = e => {
@@ -64,6 +63,7 @@ class Appointment extends Component {
     this.setState({
       issue: "",
       issueSelected: false,
+      issueAdditionalInfo: "",
     })
   }
   editDeviceModel = e => {
@@ -75,6 +75,7 @@ class Appointment extends Component {
       deviceModelSelected: false,
       laptopBrand: "",
       laptopModel: "",
+      issueSelected: false,
     })
   }
   handleLaptopBrand = e => {
@@ -116,10 +117,10 @@ class Appointment extends Component {
                 <p>
                   Selected device: <b>{this.state.deviceModelId}</b>
                   <br />
-                  <Link to="" onClick={this.editDeviceModel}>
-                    Edit
-                  </Link>
                 </p>
+                <Link to="" onClick={this.editDeviceModel}>
+                  Edit
+                </Link>
               </Alert>
             </Col>
           </Row>
@@ -134,10 +135,10 @@ class Appointment extends Component {
                   Selected device: {this.state.laptopBrand}{" "}
                   {this.state.laptopModel}
                   <br />
-                  <Link to="" onClick={this.editDeviceModel}>
-                    Edit
-                  </Link>
                 </p>
+                <Link to="" onClick={this.editDeviceModel}>
+                  Edit
+                </Link>
               </Alert>
             </Col>
           </Row>
@@ -162,12 +163,19 @@ class Appointment extends Component {
     }
   }
 
+  renderAptInfo() {
+    if (this.state.issueSelected === true) {
+      return <h2>Appointment info here</h2>
+    }
+  }
+
   render() {
     return (
       <Fragment>
         {this.renderDeviceType()}
         {this.renderDeviceModel()}
         {this.renderIssue()}
+        {this.renderAptInfo()}
       </Fragment>
     )
   }

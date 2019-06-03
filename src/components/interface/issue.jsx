@@ -99,13 +99,13 @@ class Issue extends Component {
           <Row>
             <Col md="4" />
             <Col md="4">
-              <Row className="text-center">
+              <Row className="text-center margin-top-15">
                 <Input
                   onChange={this.props.onUpdateIssueInfo}
                   type="textarea"
                   name="text"
                   id="exampleText"
-                  placeholder="Additional info about the issue? Type here then submit."
+                  placeholder="Any additional description of the issue?"
                 />
               </Row>
               <button

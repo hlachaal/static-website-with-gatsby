@@ -15,3 +15,9 @@ p {
   margin-top: 15px;
   width: 100%;
 }
+.margin-top-15 {
+  margin-top: 15px;
+}
+.alert-light {
+  color: #000000;
+}

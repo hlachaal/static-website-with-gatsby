@@ -4,6 +4,7 @@ import { Alert, Row, Col } from "reactstrap"
 import DeviceType from "./interface/deviceType"
 import DeviceModel from "./interface/deviceModel"
 import Issue from "./interface/issue"
+import AppointmentInfo from "./interface/appointmentInfo"
 
 class Appointment extends Component {
   state = {
@@ -16,6 +17,9 @@ class Appointment extends Component {
     issue: "",
     issueAdditionalInfo: "",
     issueSelected: false,
+    addressInfo: {
+      submitted: false,
+    },
   }
   selectDevice = e => {
     const deviceTypeId = e
@@ -163,9 +167,24 @@ class Appointment extends Component {
     }
   }
 
+  updateText = e => {
+    this.state.addressInfo[e.target.name] = e.target.value
+  }
+  submitAddress = () => {
+    const addressInfo = { ...this.state.addressInfo }
+    addressInfo.submitted = true
+    this.setState({ addressInfo })
+  }
+
   renderAptInfo() {
     if (this.state.issueSelected === true) {
-      return <h2>Appointment info here</h2>
+      return (
+        <AppointmentInfo
+          onUpdateText={this.updateText}
+          addressInfo={this.state.addressInfo}
+          onSubmitAddress={this.submitAddress}
+        />
+      )
     }
   }
 

@@ -95,7 +95,7 @@ class DeviceModel extends Component {
               <br />
               <br />
               <Link onClick={this.props.onchangeDevice} to="">
-                Change Device
+                Edit
               </Link>
             </Col>
             <Col md="4" />

@@ -90,7 +90,7 @@ class DeviceModel extends Component {
                 onClick={this.props.onSubmitLaptop}
                 className="btn custom-padding"
               >
-                Submit
+                Continue
               </button>
               <br />
               <br />

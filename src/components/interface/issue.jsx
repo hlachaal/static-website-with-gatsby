@@ -105,14 +105,14 @@ class Issue extends Component {
                   type="textarea"
                   name="text"
                   id="exampleText"
-                  placeholder="Any additional description of the issue?"
+                  placeholder="Additional info (Optional)"
                 />
               </Row>
               <button
                 onClick={this.props.onSubmitIssue}
                 className="btn custom-padding"
               >
-                Submit
+                Continue
               </button>
             </Col>
             <Col md="4" />

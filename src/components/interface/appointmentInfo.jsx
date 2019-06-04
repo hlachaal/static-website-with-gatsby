@@ -1,7 +1,12 @@
 import React, { Component, Fragment } from "react"
-import { Alert, Row, Col, Input, FormGroup, Label } from "reactstrap"
 import { Link } from "gatsby"
-import SimpleReactValidator from "simple-react-validator"
+import { Alert, Row, Col, Input, FormGroup } from "reactstrap"
+import DatePicker from "react-datepicker"
+import setMinutes from "date-fns/setMinutes"
+import setHours from "date-fns/setHours"
+import Moment from "react-moment"
+import "moment-timezone"
+import "react-datepicker/dist/react-datepicker.css"
 
 class AppointemntInfo extends Component {
   renderAddressForm() {
@@ -9,15 +14,44 @@ class AppointemntInfo extends Component {
       return (
         <Fragment>
           <Alert color="light">
-            <Row className="text-center">
-              <Col md="12">
-                <p>Where to meet with the tech?</p>
+            <Row className="margin-top-15">
+              <Col md={3} />
+              <Col md={6}>
+                <p className="text-center">What's your preferred timing?</p>
               </Col>
+              <Col md={3} />
             </Row>
-            <Row className="text-center margin-top-15">
-              <Col md="12">
+            <Row className="margin-top-15">
+              <Col md={3} />
+              <Col md={6}>
+                <DatePicker
+                  inline
+                  className="form-control"
+                  minDate={new Date()}
+                  minTime={setHours(setMinutes(new Date(), 0), 7)}
+                  maxTime={setHours(setMinutes(new Date(), 30), 19)}
+                  placeholderText="Click to select a date"
+                  selected={this.props.startDate}
+                  onChange={this.props.onHandleChange}
+                  showTimeSelect
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                />
+              </Col>
+              <Col md={3} />
+            </Row>
+            <Row className="margin-top-15">
+              <Col md={3} />
+              <Col md={6}>
+                <p className="text-center">Where can we meet you?</p>
+              </Col>
+              <Col md={3} />
+            </Row>
+            <Row className="margin-top-15">
+              <Col md={3} />
+              <Col md={6}>
                 <FormGroup>
                   <Input
+                    value={this.props.addressInfo.address}
                     onChange={this.props.onUpdateText}
                     type="text"
                     name="address"
@@ -29,6 +63,7 @@ class AppointemntInfo extends Component {
                   <Col md={6}>
                     <FormGroup>
                       <Input
+                        value={this.props.addressInfo.city}
                         onChange={this.props.onUpdateText}
                         type="text"
                         name="city"
@@ -40,6 +75,7 @@ class AppointemntInfo extends Component {
                   <Col md={4}>
                     <FormGroup>
                       <Input
+                        value={this.props.addressInfo.state}
                         onChange={this.props.onUpdateText}
                         type="text"
                         name="state"
@@ -51,6 +87,7 @@ class AppointemntInfo extends Component {
                   <Col md={2}>
                     <FormGroup>
                       <Input
+                        value={this.props.addressInfo.zip}
                         onChange={this.props.onUpdateText}
                         type="text"
                         name="zip"
@@ -61,7 +98,26 @@ class AppointemntInfo extends Component {
                   </Col>
                 </Row>
               </Col>
+              <Col md={3} />
             </Row>
+
+            <Row className="margin-top-15">
+              <Col md={3} />
+              <Col md={6}>
+                <FormGroup>
+                  <Input
+                    value={this.props.addressInfo.instructions}
+                    onChange={this.props.onUpdateText}
+                    type="textarea"
+                    name="instructions"
+                    id="instructions"
+                    placeholder="Add instructions (Optional)"
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={3} />
+            </Row>
+
             <Row>
               <Col md={4} />
               <Col md={4}>
@@ -69,7 +125,7 @@ class AppointemntInfo extends Component {
                   onClick={this.props.onSubmitAddress}
                   className="btn custom-padding"
                 >
-                  Submit
+                  Continue
                 </button>
               </Col>
               <Col md={4} />
@@ -78,17 +134,36 @@ class AppointemntInfo extends Component {
         </Fragment>
       )
     }
-  }
-  renderDateForm() {
-    if (this.props.addressInfo.submitted === true) return <h2>date</h2>
+    if (this.props.addressInfo.submitted === true) {
+      return (
+        <Fragment>
+          <Row className="text-center">
+            <Col md="12">
+              <Alert color="light">
+                <p>
+                  Time:{" "}
+                  <b>
+                    <Moment
+                      format="dddd MMMM Do YYYY, h:mm a"
+                      date={this.props.startDate}
+                    />
+                  </b>
+                </p>
+                <p className="margin-15">
+                  Location: <b>{this.props.addressInfo.address}</b>
+                </p>
+                <Link to="" onClick={this.props.onEditTimeLocation}>
+                  Edit
+                </Link>
+              </Alert>
+            </Col>
+          </Row>
+        </Fragment>
+      )
+    }
   }
   render() {
-    return (
-      <Fragment>
-        {this.renderAddressForm()}
-        {this.renderDateForm()}
-      </Fragment>
-    )
+    return <Fragment>{this.renderAddressForm()}</Fragment>
   }
 }
 export default AppointemntInfo

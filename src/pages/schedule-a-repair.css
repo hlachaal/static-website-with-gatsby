@@ -2,7 +2,7 @@
   font-size: 26px !important;
 }
 .alert-light {
-  background: transparent;
+  background: #d8d8d8;
 }
 .alert-light h2 {
   font-weight: 300;
@@ -20,4 +20,45 @@ p {
 }
 .alert-light {
   color: #000000;
+}
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range {
+  background-color: #6dd5ca !important;
+}
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item--selected {
+  background-color: #6dd5ca !important;
+}
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box {
+  width: 100%;
+}
+.react-datepicker__time-container {
+  width: 25%;
+}
+.react-datepicker__month-container {
+  width: 75%;
+}
+.text-align-right {
+  text-align: right;
+}
+.margin-15 {
+  margin: 15px;
+}
+.react-datepicker {
+  width: 100%;
+}
+.btn {
+  color: #ffffff;
+}
+.btn:hover {
+  color: #ffffff;
 }

@@ -7,20 +7,26 @@ import Issue from "./interface/issue"
 import AppointmentInfo from "./interface/appointmentInfo"
 
 class Appointment extends Component {
-  state = {
-    deviceTypeId: 0,
-    deviceTypeSelected: false,
-    deviceModelId: 0,
-    deviceModelSelected: false,
-    laptopBrand: "",
-    laptopModel: "",
-    issue: "",
-    issueAdditionalInfo: "",
-    issueSelected: false,
-    addressInfo: {
-      submitted: false,
-    },
+  constructor(props) {
+    super(props)
+    this.state = {
+      deviceTypeId: 0,
+      deviceTypeSelected: false,
+      deviceModelId: 0,
+      deviceModelSelected: false,
+      laptopBrand: "",
+      laptopModel: "",
+      issue: "",
+      issueAdditionalInfo: "",
+      issueSelected: false,
+      addressInfo: {
+        submitted: false,
+      },
+      startDate: new Date(),
+    }
+    this.handleDateChange = this.handleDateChange.bind(this)
   }
+
   selectDevice = e => {
     const deviceTypeId = e
     const deviceTypeSelected = true
@@ -119,7 +125,7 @@ class Appointment extends Component {
             <Col md="12">
               <Alert color="light">
                 <p>
-                  Selected device: <b>{this.state.deviceModelId}</b>
+                  Device: <b>{this.state.deviceModelId}</b>
                   <br />
                 </p>
                 <Link to="" onClick={this.editDeviceModel}>
@@ -168,11 +174,33 @@ class Appointment extends Component {
   }
 
   updateText = e => {
-    this.state.addressInfo[e.target.name] = e.target.value
+    const addressInfo = { ...this.state.addressInfo }
+    addressInfo[e.target.name] = e.target.value
+    this.setState({ addressInfo })
   }
   submitAddress = () => {
     const addressInfo = { ...this.state.addressInfo }
-    addressInfo.submitted = true
+    if (
+      addressInfo.address &&
+      addressInfo.city &&
+      addressInfo.state &&
+      addressInfo.zip
+    ) {
+      addressInfo.submitted = true
+      this.setState({ addressInfo })
+    }
+  }
+
+  handleDateChange(date) {
+    this.setState({
+      startDate: date,
+    })
+    console.log(this.state)
+  }
+  editTimeLocation = e => {
+    e.preventDefault()
+    const addressInfo = { ...this.state.addressInfo }
+    addressInfo.submitted = false
     this.setState({ addressInfo })
   }
 
@@ -183,6 +211,9 @@ class Appointment extends Component {
           onUpdateText={this.updateText}
           addressInfo={this.state.addressInfo}
           onSubmitAddress={this.submitAddress}
+          onHandleChange={this.handleDateChange}
+          startDate={this.state.startDate}
+          onEditTimeLocation={this.editTimeLocation}
         />
       )
     }

@@ -620,7 +620,8 @@ pre tt:after {
   }
 }
 .logo {
-  width: 115px;
+  width: 150px;
+  border-radius: 0.25rem;
 }
 .navbar-toggler {
   margin-top: -1.5rem;
@@ -647,6 +648,11 @@ a {
 .margin-top-30 {
   margin-top: 30px;
 }
-.navbar-light .navbar-toggler {
+.navbar {
   background: #ffffff;
+}
+.card {
+  background-clip: unset !important;
+  border: none !important;
+  margin: 10px 0px !important;
 }

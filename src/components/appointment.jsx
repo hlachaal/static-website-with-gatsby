@@ -1,10 +1,12 @@
-import React, { Component, Fragment } from "react"
+import React, { Component } from "react"
 import { Link } from "gatsby"
 import { Alert, Row, Col } from "reactstrap"
+import Moment from "react-moment"
 import DeviceType from "./interface/deviceType"
 import DeviceModel from "./interface/deviceModel"
 import Issue from "./interface/issue"
 import AppointmentInfo from "./interface/appointmentInfo"
+import { FaEdit } from "react-icons/fa"
 
 class Appointment extends Component {
   constructor(props) {
@@ -129,7 +131,7 @@ class Appointment extends Component {
                   <br />
                 </p>
                 <Link to="" onClick={this.editDeviceModel}>
-                  Edit
+                  <FaEdit /> Edit
                 </Link>
               </Alert>
             </Col>
@@ -147,7 +149,7 @@ class Appointment extends Component {
                   <br />
                 </p>
                 <Link to="" onClick={this.editDeviceModel}>
-                  Edit
+                  <FaEdit /> Edit
                 </Link>
               </Alert>
             </Col>
@@ -205,7 +207,40 @@ class Appointment extends Component {
   }
 
   renderAptInfo() {
-    if (this.state.issueSelected === true) {
+    if (this.state.addressInfo.submitted === true) {
+      return (
+        <Row className="text-center">
+          <Col md="12">
+            <Alert color="light">
+              <p>
+                Time:{" "}
+                <b>
+                  <Moment
+                    format="dddd MMMM Do YYYY, h:mm a"
+                    date={this.state.startDate}
+                  />
+                </b>
+              </p>
+              <p className="margin-15">
+                Location: <b>{this.state.addressInfo.address}</b>
+              </p>
+              <Link
+                to=""
+                onClick={e => {
+                  this.editTimeLocation(e)
+                }}
+              >
+                <FaEdit /> Edit
+              </Link>
+            </Alert>
+          </Col>
+        </Row>
+      )
+    }
+    if (
+      this.state.addressInfo.submitted === false &&
+      this.state.issueSelected === true
+    ) {
       return (
         <AppointmentInfo
           onUpdateText={this.updateText}
@@ -213,7 +248,6 @@ class Appointment extends Component {
           onSubmitAddress={this.submitAddress}
           onHandleChange={this.handleDateChange}
           startDate={this.state.startDate}
-          onEditTimeLocation={this.editTimeLocation}
         />
       )
     }
@@ -221,12 +255,12 @@ class Appointment extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div className="min-height-430">
         {this.renderDeviceType()}
         {this.renderDeviceModel()}
         {this.renderIssue()}
         {this.renderAptInfo()}
-      </Fragment>
+      </div>
     )
   }
 }

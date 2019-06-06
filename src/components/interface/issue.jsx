@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react"
 import { Alert, Row, Col, Input } from "reactstrap"
 import { Link } from "gatsby"
+import { FaEdit } from "react-icons/fa"
 
 import { getPhoneIssues } from "./services/phoneIssueService"
 import { getTabletIssues } from "./services/tabletIssueService"
@@ -94,7 +95,7 @@ class Issue extends Component {
             <br />
           </p>
           <Link to="" onClick={this.props.onEditIssue}>
-            Edit
+            <FaEdit /> Edit
           </Link>
           <Row>
             <Col md="4" />
@@ -129,7 +130,7 @@ class Issue extends Component {
             <p>{this.props.issueAdditionalInfo}</p>
           </p>
           <Link to="" onClick={this.props.onEditIssue}>
-            Edit
+            <FaEdit /> Edit
           </Link>
         </Alert>
       )

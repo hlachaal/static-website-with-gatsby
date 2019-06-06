@@ -10,7 +10,7 @@ const ScheduleRepair = () => (
   <Layout>
     <SEO title="Schedule an appointment with a tech to fix phone, tablet or laptop" />
     <Container className="light-text">
-      <Row>
+      <Row className="margin-top-100">
         <Col className="text-center">
           <h1 className="margin-70 light-text">SCHEDULE A REPAIR</h1>
         </Col>

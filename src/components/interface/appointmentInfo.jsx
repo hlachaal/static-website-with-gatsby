@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from "react"
-import { Link } from "gatsby"
 import { Alert, Row, Col, Input, FormGroup } from "reactstrap"
 import DatePicker from "react-datepicker"
 import setMinutes from "date-fns/setMinutes"
 import setHours from "date-fns/setHours"
-import Moment from "react-moment"
 import "moment-timezone"
 import "react-datepicker/dist/react-datepicker.css"
 
@@ -134,36 +132,18 @@ class AppointemntInfo extends Component {
         </Fragment>
       )
     }
+  }
+  renderContactForm() {
     if (this.props.addressInfo.submitted === true) {
-      return (
-        <Fragment>
-          <Row className="text-center">
-            <Col md="12">
-              <Alert color="light">
-                <p>
-                  Time:{" "}
-                  <b>
-                    <Moment
-                      format="dddd MMMM Do YYYY, h:mm a"
-                      date={this.props.startDate}
-                    />
-                  </b>
-                </p>
-                <p className="margin-15">
-                  Location: <b>{this.props.addressInfo.address}</b>
-                </p>
-                <Link to="" onClick={this.props.onEditTimeLocation}>
-                  Edit
-                </Link>
-              </Alert>
-            </Col>
-          </Row>
-        </Fragment>
-      )
     }
   }
   render() {
-    return <Fragment>{this.renderAddressForm()}</Fragment>
+    return (
+      <Fragment>
+        {this.renderAddressForm()}
+        {this.renderContactForm()}
+      </Fragment>
+    )
   }
 }
 export default AppointemntInfo

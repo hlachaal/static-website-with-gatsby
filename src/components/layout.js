@@ -29,7 +29,7 @@ const Layout = ({ children }) => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
         {children}
-        <footer className="text-center  margin-top-30">
+        <footer className="text-center bg-gray">
           <Container className="light-text">
             <h3>
               <FaYelp />

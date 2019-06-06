@@ -1,8 +1,11 @@
 import React, { Component, Fragment } from "react"
 import { Alert, Row, Col, Card } from "reactstrap"
-import { FaMobileAlt, FaTabletAlt, FaLaptop } from "react-icons/fa"
+import { FaMobileAlt, FaTabletAlt, FaLaptop, FaGamepad } from "react-icons/fa"
 
 class DeviceType extends Component {
+  doNothing = e => {
+    e.preventDefault()
+  }
   render() {
     return (
       <Fragment>
@@ -46,6 +49,22 @@ class DeviceType extends Component {
                     </button>
                   </Card>
                 </Col>
+              </Row>
+              <Row className="text-center">
+                <Col md="4">
+                  <Card>
+                    <button
+                      className="btn font26"
+                      onClick={e => this.doNothing(e)}
+                    >
+                      <FaGamepad />
+                      <br />
+                      video game console
+                    </button>
+                  </Card>
+                </Col>
+                <Col md="4" />
+                <Col md="4" />
               </Row>
             </Alert>
           </Col>

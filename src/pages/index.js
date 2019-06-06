@@ -77,10 +77,10 @@ const IndexPage = () => (
           <div className="clearfix" />
         </section>
       </div>
-      <Container className="light-text">
+      <div className="light-text padding-80 bg-white">
         <Row>
           <Col className="text-center">
-            <h1 className="margin-70 light-text">How it works</h1>
+            <h1 className="light-text">How it works</h1>
             <p>
               Most repairs are done within 30 minutes to 1 hour in a location
               and at a time you choose. You pay when the job is done. All waht
@@ -120,15 +120,15 @@ const IndexPage = () => (
             </div>
           </Col>
         </Row>
-      </Container>
-      <section className="gray-bg margin-top-60 light-text">
+      </div>
+      <section className="gray-bg light-text">
         <Container className="text-center  padding-60">
           <Row>
             <Col className="text-center">
               <h1 className="light-text">we repair</h1>
             </Col>
           </Row>
-          <Row className="margin-top-30">
+          <Row className="margin-top-30 bigger-font">
             <Col md="4">
               <h2 className="light-text">
                 <FaMobileAlt />
@@ -175,7 +175,7 @@ const IndexPage = () => (
         </Container>
       </section>
 
-      <section className="light-text">
+      <section className="light-text bg-gray">
         <Container className="text-center  padding-60">
           <Row>
             <Col className="text-center">

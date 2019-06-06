@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import { FormGroup, Label, Alert, Row, Col, Input } from "reactstrap"
 import { getPhoneModels } from "./services/phoneModelService"
 import { getTabletModels } from "./services/tabletModelService"
+import { FaEdit } from "react-icons/fa"
 
 class DeviceModel extends Component {
   renderModels() {
@@ -95,7 +96,7 @@ class DeviceModel extends Component {
               <br />
               <br />
               <Link onClick={this.props.onchangeDevice} to="">
-                Edit
+                <FaEdit /> Change device type
               </Link>
             </Col>
             <Col md="4" />
